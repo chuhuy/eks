@@ -23,8 +23,21 @@ sudo installer -pkg AWSCLIV2.pkg -target /
 Verify
 
 ```
-
 which aws
-aws --version
+```
 
+Output:
+
+```
+/usr/local/bin/aws
+```
+
+```
+aws --version
+```
+
+Output:
+
+```
+aws-cli/2.9.7 Python/3.9.11 Darwin/23.4.0 exe/x86_64 prompt/off
 ```
