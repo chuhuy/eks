@@ -6,10 +6,10 @@
 
 # 01 - 👷🏻‍♂️ install aws cli
 
-Ref 1:
+📗 Ref 1:
 [https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
-Ref 2:
+📗 Ref 2:
 [https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 
 MacOs:
@@ -21,7 +21,7 @@ sudo installer -pkg AWSCLIV2.pkg -target /
 
 ### 🚓 verify aws cli installed location
 
-Command
+💻 Command
 
 ```
 which aws
@@ -37,7 +37,7 @@ Output Example:
 
 ### ✅ verify aws version
 
-Command
+💻 Command
 
 ```
 aws --version
@@ -130,7 +130,7 @@ rm eksctl_$PLATFORM.zip
 
 ### ✅ verify
 
-command 1:
+🌻 command 1:
 
 ```
 eksctl info
