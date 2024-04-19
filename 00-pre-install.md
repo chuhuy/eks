@@ -1,10 +1,10 @@
-# 00 - Highlights
+# 00 - 🥰 summary
 
 - Install AWS cli
 - Install kubectl cli
 - Install eksctl cli
 
-# 01 - install aws cli
+# 01 - 👷🏻‍♂️ install aws cli
 
 Ref 1:
 [https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
@@ -19,7 +19,7 @@ curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
 sudo installer -pkg AWSCLIV2.pkg -target /
 ```
 
-### verify aws cli installed location
+### 🚓 verify aws cli installed location
 
 Command
 
@@ -27,13 +27,13 @@ Command
 which aws
 ```
 
-Output:
+Output Example:
 
 ```
 /usr/local/bin/aws
 ```
 
-### verify aws version
+### 🚓 verify aws version
 
 Command
 
@@ -41,7 +41,7 @@ Command
 aws --version
 ```
 
-Output:
+Output Example:
 
 ```
 aws-cli/2.9.7 Python/3.9.11 Darwin/23.4.0 exe/x86_64 prompt/off
