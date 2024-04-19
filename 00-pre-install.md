@@ -33,7 +33,9 @@ Output Example:
 /usr/local/bin/aws
 ```
 
-### 🚓 verify aws version
+🩵 command return a location of aws cli is GOOD
+
+### ✅ verify aws version
 
 Command
 
@@ -47,4 +49,4 @@ Output Example:
 aws-cli/2.9.7 Python/3.9.11 Darwin/23.4.0 exe/x86_64 prompt/off
 ```
 
----
+🩵 aws cli version 2.x is GOOD
