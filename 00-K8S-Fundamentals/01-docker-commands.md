@@ -84,11 +84,32 @@ docker run -p 8081:8080 vietaws/arm:v1
 Output example:
 
 ```
+Unable to find image 'vietaws/arm:v1' locally
+v2: Pulling from vietaws/arm
+1e92f3a395ff: Already exists
+374850c6db17: Already exists
+421c44fab18b: Already exists
+b9717a38adec: Already exists
+a4516e430499: Already exists
+83507c165f45: Already exists
+72c79ca077cb: Already exists
+763e0db536d0: Already exists
+bc759a21b60e: Already exists
+2a245d6e960c: Already exists
+37af4eb023df: Already exists
+21c8d0826208: Already exists
+b7e67d57d35e: Already exists
+84c17beff7da: Already exists
+Digest: sha256:743dd61dfa2581792ffd83526b1111e5e5784eb3e575aa3b033c919183c54c7b
+Status: Downloaded newer image for vietaws/arm:v1
+f8a273d8a2522d412b27eccad596939ccf70449396004c75ee910c9602dbb2b7
 > simple-app@1.0.0 start
 > node index.js
 
 Server is running on port 8080
 ```
+
+💡 Docker will download image if it is not existed on your local computer
 
 ‼️ Your container is running on port 8080, but you exposed to port 8081. Try to
 access http://localhost:8081 and see the website.
@@ -98,3 +119,34 @@ access http://localhost:8081 and see the website.
 💡I am using Macbook M1 chip, so my container image is `vietaws/arm:v1`, but you
 may use `vietaws/eks:v1` container image. In next chapter, we will learn Amazon
 EKS and `vietaws/eks:v1` will be a main choice.
+
+Other docker run command options:
+
+- `docker run -d -p 8081:8080 vietaws/eks:v1` - `-d` run in detach mode
+- `docker run -d --name miracle -p 8082:8080 vietaws/arm:v2`
+
+```
+CONTAINER ID   IMAGE            COMMAND                  CREATED          STATUS          PORTS                    NAMES
+ef69ef3cc9b8   vietaws/arm:v2   "docker-entrypoint.s…"   3 seconds ago    Up 2 seconds    0.0.0.0:8082->8080/tcp   **miracle**
+be6801cc6364   vietaws/arm:v1   "docker-entrypoint.s…"   42 minutes ago   Up 42 minutes   0.0.0.0:8081->8080/tcp   elegant_hellman
+```
+
+# 4️⃣ List all running container
+
+Command:
+
+```
+docker ps
+```
+
+Output example:
+
+```
+CONTAINER ID   IMAGE            COMMAND                  CREATED          STATUS          PORTS                    NAMES
+be6801cc6364   vietaws/arm:v1   "docker-entrypoint.s…"   34 minutes ago   Up 34 minutes   0.0.0.0:8081->8080/tcp   elegant_hellman
+```
+
+Legend:
+
+- be6801cc6364: container id
+- elegant_hellman: container name
