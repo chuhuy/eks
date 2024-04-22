@@ -150,3 +150,48 @@ Legend:
 
 - be6801cc6364: container id
 - elegant_hellman: container name
+
+# 5️⃣ Access container's log
+
+Command:
+
+```
+docker logs <container-name> -- sh
+```
+
+Example: `docker logs miracle`
+
+- `miracle` is a container name
+
+Output:
+
+```
+> simple-app@1.0.0 start
+> node index.js
+
+Server is running on port 8080
+os hostname:  ef69ef3cc9b8
+```
+
+☑️ You should access website `http://localhost:8082` to get the os hostname log.
+
+Options:
+
+- `docker logs <container_name> -f` - live logs viewing (`f` is for `follow`)
+
+# 6️⃣ Interact container's shell
+
+Command:
+
+```
+docker exec -it <container_name> sh
+```
+
+Example: `docker exec -it miracle sh` Output example:
+
+```
+docker exec -it miracle sh
+# ls
+Dockerfile  cache  data  index.js  node_modules  package-lock.json  package.json
+#
+```
