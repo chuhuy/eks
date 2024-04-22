@@ -74,7 +74,7 @@ person:
 
 # 4️⃣ Multiple lines
 
-## 🍄 Using |
+## 🍄 Using Literal Style |
 
 Example:
 
@@ -86,4 +86,29 @@ description: |
   about me.
 ```
 
-➡️ `This is a very long description`**\n**`about me`**\n**
+➡️ `This is a very long description`**\n**`about me.`**\n**
+
+✅ This is useful for running commands to install some packages (Amazon EC2's
+userdata)
+
+## 🍄 Using Folded Style >
+
+Example
+
+```
+name: vietaws
+age: 18
+description: >
+  This is a very long description
+  about me.
+```
+
+➡️ `This is a very long description about me.`**\n**
+
+Options:
+
+```
+- >, |: "clip": keep the line feed, remove the trailing blank lines.
+- >-, |-: "strip": remove the line feed, remove the trailing blank lines.
+- >+, |+: "keep": keep the line feed, keep trailing blank lines.
+```
