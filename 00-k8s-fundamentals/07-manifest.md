@@ -3,10 +3,6 @@
 Sketelon:
 
 ```
-kubectl get pod
-```
-
-```
 apiVersion:
 kind:
 metadata:
@@ -36,4 +32,28 @@ spec:
       ports: #List
       - containerPort: 8080
 
+```
+
+**📗 More detail**: https://kubernetes.io/docs/concepts/workloads/pods/
+
+## 💡 Check all Kind & apiVersion
+
+```
+kubectl api-server
+```
+
+Output example:
+
+```
+NAME                              SHORTNAMES   APIVERSION                        NAMESPACED   KIND
+bindings                                       v1                                true         Binding
+componentstatuses                 cs           v1                                false        ComponentStatus
+configmaps                        cm           v1                                true         ConfigMap
+endpoints                         ep           v1                                true         Endpoints
+events                            ev           v1                                true         Event
+limitranges                       limits       v1                                true         LimitRange
+namespaces                        ns           v1                                false        Namespace
+nodes                             no           v1                                false        Node
+persistentvolumeclaims            pvc          v1                                true         PersistentVolumeClaim
+persistentvolumes                 pv           v1                                false        PersistentVolume
 ```
