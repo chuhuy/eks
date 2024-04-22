@@ -56,6 +56,40 @@ NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE kubernetes ClusterIP 10.100.0.1
 
 ✅ This port will be randomized.
 
+## 🍄 View Service detail
+
+```
+kubectl describe svc <service_name>
+```
+
+Example:
+
+```
+kubectl describe svc service1`
+```
+
+Ouput:
+
+```
+Name:                     service1
+Namespace:                default
+Labels:                   run=vietpod1
+Annotations:              <none>
+Selector:                 run=vietpod1
+Type:                     NodePort
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.100.235.249
+IPs:                      10.100.235.249
+Port:                     <unset>  8081/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  30238/TCP
+Endpoints:                192.168.55.172:8080
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+```
+
 ## 🍄 Finding Public IP of Worker node
 
 ```
@@ -104,6 +138,22 @@ Try to access same port but in remaining node: http://52.221.232.0:30238
 Website:
 
 <img src="../images/img2.png" alt='nodeport-demo-vietaws' style="width: 300px" />
+```
+
+# 3️⃣ Delete Pod & NodePort Service
+
+```
+# delete pod
+kubectl delete pod vietpod1
+
+# delete service
+kubectl delete svc service1
+
+# verify running pod
+kubectl get pods
+
+# verify services
+kubectl get svc
 ```
 
 ✅ Congratulations! 🚀🚀🚀
