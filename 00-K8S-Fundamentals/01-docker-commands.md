@@ -127,7 +127,7 @@ Other docker run command options:
 
 ```
 CONTAINER ID   IMAGE            COMMAND                  CREATED          STATUS          PORTS                    NAMES
-ef69ef3cc9b8   vietaws/arm:v2   "docker-entrypoint.s…"   3 seconds ago    Up 2 seconds    0.0.0.0:8082->8080/tcp   **miracle**
+ef69ef3cc9b8   vietaws/arm:v2   "docker-entrypoint.s…"   3 seconds ago    Up 2 seconds    0.0.0.0:8082->8080/tcp   miracle
 be6801cc6364   vietaws/arm:v1   "docker-entrypoint.s…"   42 minutes ago   Up 42 minutes   0.0.0.0:8081->8080/tcp   elegant_hellman
 ```
 
