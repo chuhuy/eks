@@ -234,7 +234,7 @@ docker rmi $(docker images) -f
 
 # 9️⃣ Docker build command
 
-Build
+## 🍄 Docker Build
 
 ```
 docker build -t vietaws/eks:v10 .
@@ -273,3 +273,27 @@ COPY . ./
 EXPOSE 8080
 CMD ["npm", "start"]
 ```
+
+Options:
+
+- `docker tag <existed_container_tag> <new_container_tag>`
+
+Example: `docker tag vietaws/arm:v1 vietaws/arm:v8` Output:
+
+```
+REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
+vietaws/arm   v5        c1e1e17346b0   11 hours ago   1.1GB
+vietaws/arm   v2        b988925ec8b4   11 hours ago   1.1GB
+vietaws/arm   v1        a14307b91ae9   11 hours ago   1.1GB
+vietaws/arm   v8        a14307b91ae9   11 hours ago   1.1GB
+```
+
+## 🍄 Docker Push
+
+Command:
+
+```
+docker push <alias/repo:tag>
+```
+
+Example: `docker push vietaws/arm:v8`
