@@ -122,6 +122,7 @@ EKS and `vietaws/eks:v1` will be a main choice.
 
 Other docker run command options:
 
+- `docker pull <container_image>` - download image only
 - `docker run -d -p 8081:8080 vietaws/eks:v1` - `-d` run in detach mode
 - `docker run -d --name miracle -p 8082:8080 vietaws/arm:v2`
 
@@ -150,6 +151,20 @@ Legend:
 
 - be6801cc6364: container id
 - elegant_hellman: container name
+
+Options:
+
+- `docker stats` - Display a live stream of container(s) resource usage
+  statistics
+
+```
+CONTAINER ID   NAME              CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O        PIDS
+ef69ef3cc9b8   miracle           0.00%     50.83MiB / 7.755GiB   0.64%     4.75kB / 2.48kB   20.5kB / 4.1kB   23
+be6801cc6364   elegant_hellman   0.00%     53.32MiB / 7.755GiB   0.67%     2.92kB / 1.23kB   0B / 4.1kB       23
+```
+
+- `docker top <container-id or name>` - Display the running processes of a
+  container
 
 # 5️⃣ Access container's log
 
