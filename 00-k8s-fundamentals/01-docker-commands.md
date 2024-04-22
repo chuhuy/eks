@@ -231,3 +231,45 @@ docker images
 docker rmi <image_id>
 docker rmi $(docker images) -f
 ```
+
+# 9️⃣ Docker build command
+
+Build
+
+```
+docker build -t vietaws/eks:v10 .
+```
+
+💡 Explain: build docker image and tagging.
+
+- `vietaws` - docker hub alias
+- `eks` - docker hub repository
+- `v10` - tag.
+- `.` - current directory has `Dockerfile`
+
+Dockerfile example:
+
+```
+FROM public.ecr.aws/docker/library/node:lts-alpine3.19
+
+# FROM --platform=linux/arm64 node:18 #for apple chip m1
+
+#configure working directory
+
+WORKDIR /app
+
+RUN mkdir -p /app/data
+
+RUN mkdir -p /app/cache
+
+COPY package*.json /app/
+
+RUN npm install
+
+#bundle app source code
+
+COPY . ./
+
+EXPOSE 8080
+CMD ["npm", "start"]
+```

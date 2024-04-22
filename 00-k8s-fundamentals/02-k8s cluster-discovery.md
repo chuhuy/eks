@@ -1,6 +1,6 @@
 # ✡️ Common commands for k8s cluster
 
-### 1️⃣ Check k8s version
+# 1️⃣ Check k8s version
 
 Command:
 
@@ -16,7 +16,7 @@ Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
 Server Version: v1.29.3-eks-adc7111
 ```
 
-### 2️⃣ Check Node Managed:
+# 2️⃣ Check Node Managed:
 
 Command:
 
@@ -33,7 +33,7 @@ ip-192-168-35-199.ap-southeast-1.compute.internal   Ready    <none>   3d6h   v1.
 
 ```
 
-### 3️⃣ Check running pods
+# 3️⃣ Check running pods
 
 Command:
 
@@ -58,7 +58,7 @@ Other commands:
 - `kubectl get pods -owide`
 - `kubectl get pods -A`
 
-### 4️⃣ Get all namespaces
+# 4️⃣ Get all namespaces
 
 Command:
 
@@ -75,3 +75,5 @@ kube-node-lease   Active   3d7h
 kube-public       Active   3d7h
 kube-system       Active   3d7h
 ```
+
+#
