@@ -305,3 +305,33 @@ frontend-cwbvp   1/1     Running   0          3s
 frontend-fpz5z   1/1     Running   0          9m10s
 
 ```
+
+# 6️⃣ Cleanup
+
+```
+# delete replicaset
+kubectl delete rs frontend
+
+# delete service
+kubectl delete svc service3
+
+# check service
+kubectl get svc
+
+# check replicaset
+kubectl get rs
+
+# check pods
+kubectl get pods
+```
+
+Output:
+
+```
+replicaset.apps "frontend" deleted
+service "service3" deleted
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.100.0.1   <none>        443/TCP   3d12h
+No resources found in default namespace.
+No resources found in default namespace.
+```
