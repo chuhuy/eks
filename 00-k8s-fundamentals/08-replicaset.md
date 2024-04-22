@@ -81,10 +81,56 @@ frontend-92chj   1/1     Running   0          112s
 frontend-bccm8   1/1     Running   0          112s
 ```
 
+## ✅ Check ReplicaSet detail
+
+Syntax
+
+```
+kubectl describe rs <replicaset_name>
+```
+
+Example:
+
+```
+kubectl describe rs frontend
+```
+
+Output example:
+
+```
+Name:         frontend
+Namespace:    default
+Selector:     tier=frontend
+Labels:       app=user-mgnt
+              env=dev
+              tier=frontend
+Annotations:  <none>
+Replicas:     3 current / 3 desired
+Pods Status:  3 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:  tier=frontend
+  Containers:
+   vietaws:
+    Image:        vietaws/eks:v3
+    Port:         <none>
+    Host Port:    <none>
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Events:
+  Type    Reason            Age    From                   Message
+  ----    ------            ----   ----                   -------
+  Normal  SuccessfulCreate  7m56s  replicaset-controller  Created pod: frontend-92chj
+  Normal  SuccessfulCreate  7m56s  replicaset-controller  Created pod: frontend-56ctg
+  Normal  SuccessfulCreate  7m56s  replicaset-controller  Created pod: frontend-bccm8
+```
+
 ## ✅ Check Pod detail
 
 ```
+
 kubectl describe pods frontend-56ctg
+
 ```
 
 `frontend-56ctg` is Pod name
@@ -92,56 +138,37 @@ kubectl describe pods frontend-56ctg
 Output:
 
 ```
-Name:             frontend-56ctg
-Namespace:        default
-Priority:         0
-Service Account:  default
-Node:             ip-192-168-12-246.ap-southeast-1.compute.internal/192.168.12.246
-Start Time:       Tue, 23 Apr 2024 03:10:53 +0700
-Labels:           tier=frontend
-Annotations:      <none>
-Status:           Running
-IP:               192.168.17.248
-IPs:
-  IP:           192.168.17.248
-Controlled By:  ReplicaSet/frontend
-Containers:
-  vietaws:
-    Container ID:   containerd://0f340d8247e914748e591bdb1f21737834b04ceffa7a2ed05eeba6c93ccae8c1
-    Image:          vietaws/eks:v3
-    Image ID:       docker.io/vietaws/eks@sha256:0cc3c5985f4e1fdc80197bce5ca4ab34902d57d9202dc1bd64da6b63d0c5dbf6
-    Port:           <none>
-    Host Port:      <none>
-    State:          Running
-      Started:      Tue, 23 Apr 2024 03:10:54 +0700
-    Ready:          True
-    Restart Count:  0
-    Environment:    <none>
-    Mounts:
-      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-r8ndm (ro)
-Conditions:
-  Type                        Status
-  PodReadyToStartContainers   True
-  Initialized                 True
-  Ready                       True
-  ContainersReady             True
-  PodScheduled                True
-Volumes:
-  kube-api-access-r8ndm:
-    Type:                    Projected (a volume that contains injected data from multiple sources)
-    TokenExpirationSeconds:  3607
-    ConfigMapName:           kube-root-ca.crt
-    ConfigMapOptional:       <nil>
-    DownwardAPI:             true
-QoS Class:                   BestEffort
-Node-Selectors:              <none>
-Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
-                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
-Events:
-  Type    Reason     Age    From               Message
-  ----    ------     ----   ----               -------
-  Normal  Scheduled  3m23s  default-scheduler  Successfully assigned default/frontend-56ctg to ip-192-168-12-246.ap-southeast-1.compute.internal
-  Normal  Pulled     3m22s  kubelet            Container image "vietaws/eks:v3" already present on machine
-  Normal  Created    3m22s  kubelet            Created container vietaws
-  Normal  Started    3m22s  kubelet            Started container vietaws
+
+Name: frontend-56ctg Namespace: default Priority: 0 Service Account: default
+Node: ip-192-168-12-246.ap-southeast-1.compute.internal/192.168.12.246 Start
+Time: Tue, 23 Apr 2024 03:10:53 +0700 Labels: tier=frontend Annotations: <none>
+Status: Running IP: 192.168.17.248 IPs: IP: 192.168.17.248 Controlled By:
+ReplicaSet/frontend Containers: vietaws: Container ID:
+containerd://0f340d8247e914748e591bdb1f21737834b04ceffa7a2ed05eeba6c93ccae8c1
+Image: vietaws/eks:v3 Image ID:
+docker.io/vietaws/eks@sha256:0cc3c5985f4e1fdc80197bce5ca4ab34902d57d9202dc1bd64da6b63d0c5dbf6
+Port: <none> Host Port: <none> State: Running Started: Tue, 23 Apr 2024 03:10:54
++0700 Ready: True Restart Count: 0 Environment: <none> Mounts:
+/var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-r8ndm (ro)
+Conditions: Type Status PodReadyToStartContainers True Initialized True Ready
+True ContainersReady True PodScheduled True Volumes: kube-api-access-r8ndm:
+Type: Projected (a volume that contains injected data from multiple sources)
+TokenExpirationSeconds: 3607 ConfigMapName: kube-root-ca.crt ConfigMapOptional:
+<nil> DownwardAPI: true QoS Class: BestEffort Node-Selectors: <none>
+Tolerations: node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+node.kubernetes.io/unreachable:NoExecute op=Exists for 300s Events: Type Reason
+Age From Message
+
+---
+
+Normal Scheduled 3m23s default-scheduler Successfully assigned
+default/frontend-56ctg to ip-192-168-12-246.ap-southeast-1.compute.internal
+Normal Pulled 3m22s kubelet Container image "vietaws/eks:v3" already present on
+machine Normal Created 3m22s kubelet Created container vietaws Normal Started
+3m22s kubelet Started container vietaws
+
+```
+
+```
+
 ```
