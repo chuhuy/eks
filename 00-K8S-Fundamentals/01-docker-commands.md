@@ -195,3 +195,39 @@ docker exec -it miracle sh
 Dockerfile  cache  data  index.js  node_modules  package-lock.json  package.json
 #
 ```
+
+Options:
+
+- `docker exec -it <container_name> env` - Output env variables
+
+```
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=ef69ef3cc9b8
+TERM=xterm
+NODE_VERSION=18.20.2
+YARN_VERSION=1.22.19
+HOME=/root
+```
+
+# 7️⃣ Terminate container
+
+Command:
+
+```
+docker kill <container_name/id>
+```
+
+Others:
+
+- docker stop <container_name>
+- docker start <container_name>
+
+Example: `docker kill miracle`
+
+# 8️⃣ Docker images command
+
+```
+docker images
+docker rmi <image_id>
+docker rmi $(docker images) -f
+```
