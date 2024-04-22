@@ -57,3 +57,16 @@ nodes                             no           v1                               
 persistentvolumeclaims            pvc          v1                                true         PersistentVolumeClaim
 persistentvolumes                 pv           v1                                false        PersistentVolume
 ```
+
+## 💡 Finding total Kind
+
+```
+kubectl api-server | wc -l
+```
+
+➡️ Return total lines with header (minus 1 to get actual resources)
+
+```
+ /eks  kubectl api-resources | wc -l                                                 ok  3m 21s  eks-vietaws kube
+      61
+```
