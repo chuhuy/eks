@@ -184,3 +184,5 @@ ip-192-168-35-199.ap-southeast-1.compute.internal   Ready    <none>   3d11h   v1
 ## ✅ Access service
 
 Website: http://47.129.54.45:32438
+
+<img src="../images/img3.png" alt="k8s demo vietaws" style="width: 300px" />
