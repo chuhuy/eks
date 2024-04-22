@@ -67,6 +67,9 @@ kubectl api-server | wc -l
 ➡️ Return total lines with header (minus 1 to get actual resources)
 
 ```
- /eks  kubectl api-resources | wc -l                                                 ok  3m 21s  eks-vietaws kube
-      61
+ kubectl api-resources | wc -l
+
+61
 ```
+
+➡️ There are 60 resource types.
