@@ -187,7 +187,7 @@ Website: http://47.129.54.45:32438
 
 <img src="../images/img3.png" alt="k8s demo vietaws" style="width: 300px" />
 
-# 4️⃣ Advanced Verify
+# 4️⃣ Advanced Actions
 
 ## ✅ Check ownerReferences
 
@@ -233,3 +233,75 @@ frontend-fpz5z   1/1     Running   0          83s
 ```
 
 ➡️ Pod `frontend-fpz5z` is newly created with duration of `83s`
+
+# 5️⃣ Scaling ReplicaSet
+
+## ⭐️ Update manifest YAML file - Declarative way
+
+### Edit `rs-demo.yaml` file you created before.
+
+```
+# Before change
+spec:
+  replicas: 3
+
+# After change
+spec:
+  replicas: 6
+```
+
+### Run
+
+```
+# Apply latest changes to ReplicaSet
+kubectl replace -f rs-demo.yaml
+
+# Verify if new pods got created
+kubectl get pods -owide
+```
+
+## ⭐️ Update using command line - Imperative way
+
+### Syntax:
+
+```
+kubectl scale rs <replica_name> --replicas=<num_replicas>
+```
+
+### Example:
+
+```
+kubectl scale rs frontend --replicas=6
+```
+
+### Verify:
+
+```
+# get all replicaset
+kubectl get rs
+
+# get all pods
+kubectl get nodes
+```
+
+#### Output:
+
+✅ ReplicaSet
+
+```
+NAME       DESIRED   CURRENT   READY   AGE
+frontend   6         6         6       36m
+```
+
+✅ Pods
+
+```
+NAME             READY   STATUS    RESTARTS   AGE
+frontend-56ctg   1/1     Running   0          35m
+frontend-5cc77   1/1     Running   0          3s
+frontend-8sq4g   1/1     Running   0          3s
+frontend-92chj   1/1     Running   0          35m
+frontend-cwbvp   1/1     Running   0          3s
+frontend-fpz5z   1/1     Running   0          9m10s
+
+```
