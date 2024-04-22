@@ -10,8 +10,7 @@
 
 # 1️⃣ Create replicaset's manifest
 
-- Go to https://kubernetes.io
-- Search `replicaset`
+### 📗 Detail: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
 
 ## ⭐️ Replicaset's manifest:
 
