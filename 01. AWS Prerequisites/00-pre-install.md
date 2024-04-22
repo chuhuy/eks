@@ -144,7 +144,7 @@ kubectl version: v1.29.4
 OS: darwin
 ```
 
-command 2
+🌻 command 2
 
 ```
 kubectl version
