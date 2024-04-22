@@ -297,3 +297,8 @@ docker push <alias/repo:tag>
 ```
 
 Example: `docker push vietaws/arm:v8`
+
+‼️ You required to use `docker login` first before pushing container to Docker
+Hub
+
+✅ Congratulations! Let's move to next step 🚀🚀🚀
