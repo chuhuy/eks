@@ -94,3 +94,7 @@ Server is running on port 8080
 access http://localhost:8081 and see the website.
 
 <img src="../images/img1.png" alt="Your first website" style="width: 300px;display: block;margin-left:auto;margin-right:auto;" />
+
+💡I am using Macbook M1 chip, so my container image is `vietaws/arm:v1`, but you
+may use `vietaws/eks:v1` container image. In next chapter, we will learn Amazon
+EKS and `vietaws/eks:v1` will be a main choice.
