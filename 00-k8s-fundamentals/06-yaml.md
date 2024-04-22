@@ -76,6 +76,8 @@ person:
 
 ## 🍄 Using |
 
+Example:
+
 ```
 name: vietaws
 age: 18
@@ -84,4 +86,4 @@ description: |
   about me.
 ```
 
-➡️ `This is a very long description**\n**about me**\n**`
+➡️ `This is a very long description`**\n**`about me`**\n**
