@@ -135,40 +135,52 @@ kubectl describe pods frontend-56ctg
 
 `frontend-56ctg` is Pod name
 
-Output:
+# 3️⃣ Expose ReplicaSet to NodePort
+
+Syntax
 
 ```
-
-Name: frontend-56ctg Namespace: default Priority: 0 Service Account: default
-Node: ip-192-168-12-246.ap-southeast-1.compute.internal/192.168.12.246 Start
-Time: Tue, 23 Apr 2024 03:10:53 +0700 Labels: tier=frontend Annotations: <none>
-Status: Running IP: 192.168.17.248 IPs: IP: 192.168.17.248 Controlled By:
-ReplicaSet/frontend Containers: vietaws: Container ID:
-containerd://0f340d8247e914748e591bdb1f21737834b04ceffa7a2ed05eeba6c93ccae8c1
-Image: vietaws/eks:v3 Image ID:
-docker.io/vietaws/eks@sha256:0cc3c5985f4e1fdc80197bce5ca4ab34902d57d9202dc1bd64da6b63d0c5dbf6
-Port: <none> Host Port: <none> State: Running Started: Tue, 23 Apr 2024 03:10:54
-+0700 Ready: True Restart Count: 0 Environment: <none> Mounts:
-/var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-r8ndm (ro)
-Conditions: Type Status PodReadyToStartContainers True Initialized True Ready
-True ContainersReady True PodScheduled True Volumes: kube-api-access-r8ndm:
-Type: Projected (a volume that contains injected data from multiple sources)
-TokenExpirationSeconds: 3607 ConfigMapName: kube-root-ca.crt ConfigMapOptional:
-<nil> DownwardAPI: true QoS Class: BestEffort Node-Selectors: <none>
-Tolerations: node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
-node.kubernetes.io/unreachable:NoExecute op=Exists for 300s Events: Type Reason
-Age From Message
-
----
-
-Normal Scheduled 3m23s default-scheduler Successfully assigned
-default/frontend-56ctg to ip-192-168-12-246.ap-southeast-1.compute.internal
-Normal Pulled 3m22s kubelet Container image "vietaws/eks:v3" already present on
-machine Normal Created 3m22s kubelet Created container vietaws Normal Started
-3m22s kubelet Started container vietaws
-
+kubectl expose rs <replicaset_name> --type=NodePort --port=<container_port> --name=<service_name>
 ```
 
-```
+Example:
 
 ```
+kubectl expose rs frontend --type=NodePort --port=8080  --name=service3
+```
+
+➡️ Output: `service/service3 exposed`
+
+## ✅ Get service port
+
+```
+kubectl get svc
+```
+
+Output example:
+
+```
+NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+kubernetes   ClusterIP   10.100.0.1       <none>        443/TCP          3d12h
+service3     NodePort    10.100.241.230   <none>        8080:32438/TCP   75s
+```
+
+**Running Port: 32438**
+
+## ✅ Get Node's Public IP
+
+```
+kubectl get nodes -owide
+```
+
+Output example:
+
+```
+NAME                                                STATUS   ROLES    AGE     VERSION               INTERNAL-IP      EXTERNAL-IP    OS-IMAGE         KERNEL-VERSION                  CONTAINER-RUNTIME
+ip-192-168-12-246.ap-southeast-1.compute.internal   Ready    <none>   3d11h   v1.29.0-eks-5e0fdde   192.168.12.246   52.221.232.0   Amazon Linux 2   5.10.213-201.855.amzn2.x86_64   containerd://1.7.11
+ip-192-168-35-199.ap-southeast-1.compute.internal   Ready    <none>   3d11h   v1.29.0-eks-5e0fdde   192.168.35.199   47.129.54.45   Amazon Linux 2   5.10.213-201.855.amzn2.x86_64   containerd://1.7.11
+```
+
+## ✅ Access service
+
+Website: http://47.129.54.45:32438
