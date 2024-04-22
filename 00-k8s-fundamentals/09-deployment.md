@@ -92,3 +92,80 @@ vietdeploy1-6867597758-zr89h   1/1     Running   0          63s
 Website:
 
 <img src="../images/img4.png" alt="vietaws deployment k8s" style="width: 300px;"/>
+
+# 4️⃣ Update Deployment
+
+```
+# Get Container Name from current deployment
+kubectl get deployment vietdeploy1 -o yaml
+# Output Container Name: eks
+# Output Container Image: vietaws/eks:v1
+
+# Update Deployment to Version 2
+kubectl set image deployment/<deployment-name> <container-name>=<container-image>
+kubectl set image deployment/vietdeploy1 eks=vietaws/eks:v2
+```
+
+### 🔑 Before
+
+Deployment
+
+```
+kubectl get deployments
+
+NAME          READY   UP-TO-DATE   AVAILABLE   AGE
+vietdeploy1   5/5     5            5           21m
+```
+
+ReplicaSet
+
+```
+kubectl get rs
+
+NAME                     DESIRED   CURRENT   READY   AGE
+vietdeploy1-5fd8d5c7cb   5         5         5       2m54s
+```
+
+Pods
+
+```
+kubectl get pods
+
+NAME                           READY   STATUS    RESTARTS   AGE
+vietdeploy1-5fd8d5c7cb-fjzhd   1/1     Running   0          3m22s
+vietdeploy1-5fd8d5c7cb-gjglv   1/1     Running   0          3m22s
+vietdeploy1-5fd8d5c7cb-lmzvg   1/1     Running   0          3m23s
+vietdeploy1-5fd8d5c7cb-qf9ts   1/1     Running   0          3m23s
+vietdeploy1-5fd8d5c7cb-tbnq9   1/1     Running   0          3m21s
+```
+
+### 💎 After
+
+✅ ReplicaSet
+
+```
+kubectl get rs
+
+NAME                     DESIRED   CURRENT   READY   AGE
+vietdeploy1-5fd8d5c7cb   0         0         0       5m43s
+vietdeploy1-7bb4b549bf   5         5         5       48s
+```
+
+🌈 New Pods go from OLD ReplicaSet `vietdeploy1-5fd8d5c7cb` to NEW ReplicaSet
+`vietdeploy1-7bb4b549bf`
+
+✅ Pods
+
+```
+kubectl get pods
+
+NAME                           READY   STATUS    RESTARTS   AGE
+vietdeploy1-7bb4b549bf-7jlgn   1/1     Running   0          3m41s
+vietdeploy1-7bb4b549bf-nlq82   1/1     Running   0          3m39s
+vietdeploy1-7bb4b549bf-qdtdf   1/1     Running   0          3m41s
+vietdeploy1-7bb4b549bf-w7jh9   1/1     Running   0          3m41s
+vietdeploy1-7bb4b549bf-wn56p   1/1     Running   0          3m39s
+```
+
+➡️ All Pods are re-deployed. By default, `Rolling deployment` is used and there
+is no downtime.
