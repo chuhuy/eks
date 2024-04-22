@@ -91,4 +91,4 @@ vietdeploy1-6867597758-zr89h   1/1     Running   0          63s
 
 Website:
 
-<img src="../images/img4.png" alt="vietaws deployment k8s" style="with: 300px;"/>
+<img src="../images/img4.png" alt="vietaws deployment k8s" style="width: 300px;"/>
