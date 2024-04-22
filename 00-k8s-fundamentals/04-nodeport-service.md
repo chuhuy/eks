@@ -77,3 +77,7 @@ http://47.129.54.45:30238
 ```
 
 Try to access same port but in remaining node: http://52.221.232.0:30238
+
+Website:
+
+<img src="../images/img2.png" alt='nodeport-demo-vietaws' style="width: 300px" />
