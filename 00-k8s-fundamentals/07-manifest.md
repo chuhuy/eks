@@ -3,6 +3,10 @@
 Sketelon:
 
 ```
+kubectl get pod
+```
+
+```
 apiVersion:
 kind:
 metadata:
