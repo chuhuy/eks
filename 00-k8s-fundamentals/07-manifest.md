@@ -39,7 +39,7 @@ spec:
 ## 💡 Check all Kind & apiVersion
 
 ```
-kubectl api-server
+kubectl api-resources
 ```
 
 Output example:
@@ -61,7 +61,7 @@ persistentvolumes                 pv           v1                               
 ## 💡 Finding total Kind
 
 ```
-kubectl api-server | wc -l
+kubectl api-resources | wc -l
 ```
 
 ➡️ Return total lines with header (minus 1 to get actual resources)
