@@ -4,4 +4,4 @@ echo "Start commiting code"
 git add .
 git commit -m "update k8s & eks training content"
 git push
-echo "Done commiting code"
+echo "✅ Completed!"
