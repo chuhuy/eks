@@ -1,14 +1,10 @@
 # 0️⃣ List all Pods
 
-Command:
-
 ```
+# Command:
 kubectl get pods
-```
 
-Output example:
-
-```
+# Output example:
 NAME             READY   STATUS    RESTARTS   AGE
 vietaws-lkmgs    1/1     Running   0          32h
 vietaws-qskmg    1/1     Running   0          32h
@@ -22,6 +18,7 @@ Options:
   detail
 
 ```
+# kubectl get pods -owide
 NAME             READY   STATUS    RESTARTS   AGE   IP               NODE                                                NOMINATED NODE   READINESS GATES
 vietaws-lkmgs    1/1     Running   0          32h   192.168.50.79    ip-192-168-35-199.ap-southeast-1.compute.internal   <none>           <none>
 vietaws-qskmg    1/1     Running   0          32h   192.168.16.145   ip-192-168-12-246.ap-southeast-1.compute.internal   <none>           <none>
@@ -72,10 +69,10 @@ kubectl get pod -owide
 
 # 2️⃣ Delete Pod
 
-Command:
-
 ```
+# Command
 kubectl delete pod <pod_name>
 
-# Example: `kubeclt delete pod vietpod1`
+# Example:
+kubeclt delete pod vietpod1
 ```
