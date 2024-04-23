@@ -267,12 +267,12 @@ kubectl edit deployment/vietdeploy1
 ## Update Spec
 
 ```
-# Change From 2.0.0
+# Change From version 2
     spec:
       containers:
       - image: vietaws/eks:v2
 
-# Change To 3.0.0
+# Change To version 3
     spec:
       containers:
       - image: vietaws/eks:v3
@@ -370,5 +370,160 @@ vietdeploy1-7bb4b549bf   2         2         2       47m
 NAME                           READY   STATUS    RESTARTS   AGE
 vietdeploy1-7bb4b549bf-bqkpk   1/1     Running   0          4m50s
 vietdeploy1-7bb4b549bf-r88qx   1/1     Running   0          4m49s
-➡️ Redeployed Pods.
+➡️ Redeployed Pods. Application Version 2.
 ```
+
+# 7️⃣ Rollback to Specified Version
+
+```
+# List Deployment Rollout History
+kubectl rollout history deployment/<deployment-name>
+kubectl rollout history deployment/vietdeploy1
+
+# Rollback Deployment to Specific Revision
+kubectl rollout undo deployment/vietdeploy1 --to-revision=3
+
+# Verify
+
+# kubectl get rs
+NAME                     DESIRED   CURRENT   READY   AGE
+vietdeploy1-5fd8d5c7cb   2         2         2       21m
+vietdeploy1-6867597758   0         0         0       4h36m
+vietdeploy1-7bb4b549bf   0         0         0       54m
+➡️ Switched back to rs for version 2: 5fd8d5c7cb
+
+# kubectl get pods
+NAME                           READY   STATUS    RESTARTS   AGE
+vietdeploy1-5fd8d5c7cb-5s6m6   1/1     Running   0          69s
+vietdeploy1-5fd8d5c7cb-hf5qb   1/1     Running   0          68s
+➡️ Re-deployed new Pods to the RS.
+
+# kubectl get deployments
+NAME          READY   UP-TO-DATE   AVAILABLE   AGE
+vietdeploy1   2/2     2            2           4h37m
+
+# kubectl rollout history deployments vietdeploy1
+deployment.apps/vietdeploy1
+REVISION  CHANGE-CAUSE
+1         <none>
+4         <none>
+5         <none>
+
+# kubectl rollout history deployments vietdeploy1 --revision=5
+➡️ image: vietaws/eks:v3
+
+# kubectl rollout history deployments vietdeploy1 --revision=4
+➡️ image: vietaws/eks:v2
+```
+
+# 8️⃣ Rolling Restart
+
+K8s will re-create the pods in a rolling fashion
+
+```
+# kubectl rollout restart deployments vietdeploy1
+
+# kubectl get pods
+NAME                           READY   STATUS    RESTARTS   AGE
+vietdeploy1-86b7b86996-9kwr4   1/1     Running   0          8s
+vietdeploy1-86b7b86996-ql657   1/1     Running   0          7s
+➡️ Re-created new Pods in NEW RS
+
+# kubectl get rs
+NAME                     DESIRED   CURRENT   READY   AGE
+vietdeploy1-5fd8d5c7cb   0         0         0       27m
+vietdeploy1-6867597758   0         0         0       4h42m
+vietdeploy1-7bb4b549bf   0         0         0       61m
+vietdeploy1-86b7b86996   2         2         2       49s
+
+# kubectl rollout history deployments vietdeploy1
+deployment.apps/vietdeploy1
+REVISION  CHANGE-CAUSE
+1         <none>
+4         <none>
+5         <none>
+6         <none>
+```
+
+# 9️⃣ Pause & Resume Application Deployment
+
+- We are going to update our Application Version from V3 to V4 as part of
+  learning "Pause and Resume Deployments"
+- We want to make multiple changes to our Deployment, we can pause the
+  deployment make all changes and resume it.
+
+## Pause
+
+```
+# Pause the Deployment
+kubectl rollout pause deployment/<deployment-name>
+kubectl rollout pause deployment/vietdeploy1
+
+# Update Deployment - Application Version from V3 to V4
+kubectl set image deployment/vietdeploy1 eks=vietaws/eks:v4
+# Output: deployment.apps/vietdeploy1 image updated
+
+# Check the Rollout History of a Deployment
+kubectl rollout history deployment/vietdeploy1
+Observation: No new rollout should start, we should see same number of versions as we check earlier with last version number matches which we have noted earlier.
+
+# Get list of ReplicaSets
+kubectl get rs
+Observation: No new replicaSet created. We should have same number of replicaSets as earlier when we took note.
+
+# Make one more change: set limits to our container
+kubectl set resources deployment/vietdeploy1 -c=eks --limits=cpu=25m,memory=50Mi
+# Output: deployment.apps/vietdeploy1 resource requirements updated
+```
+
+## Resume
+
+```
+# Resume the Deployment
+kubectl rollout resume deployment/vietdeploy1
+
+# Check the Rollout History of a Deployment
+kubectl rollout history deployment/vietdeploy1
+Observation: You should see a new version got created
+
+deployment.apps/vietdeploy1
+REVISION  CHANGE-CAUSE
+1         <none>
+4         <none>
+5         <none>
+6         <none>
+7         <none>
+
+# Get list of ReplicaSets
+kubectl get rs
+Observation: You should see new ReplicaSet.
+
+NAME                     DESIRED   CURRENT   READY   AGE
+vietdeploy1-5fd8d5c7cb   0         0         0       37m
+vietdeploy1-6867597758   0         0         0       4h52m
+vietdeploy1-7bb4b549bf   0         0         0       70m
+vietdeploy1-86b7b86996   0         0         0       10m
+vietdeploy1-86bb57d9bd   2         2         2       20s
+```
+
+✅ Application version 4
+
+<img src="../images/img7.png" alt="vietaws" style="width: 300px" />
+
+# 🧹 Cleanup
+
+```
+# Delete Deployment (This will delete ReplicaSets automatically)
+kubectl delete deployments vietdeploy1
+
+# Delete NodePort Service
+kubectl delete svc service1
+
+# Verify Pods
+kubectl get pods
+
+# Verify RS
+kubectl get rs
+```
+
+✅ Congratulations! Let's move on 🌈
