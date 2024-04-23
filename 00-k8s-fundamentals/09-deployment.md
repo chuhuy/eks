@@ -184,34 +184,20 @@ kubectl set image deployment/vietdeploy1 eks=vietaws/eks:v2
 Deployment
 
 ```
+# kubectl get deployments
 
-kubectl get deployments
+NAME          READY   UP-TO-DATE   AVAILABLE   AGE
+vietdeploy1   2/2     2            2           3h40m
 
-NAME READY UP-TO-DATE AVAILABLE AGE vietdeploy1 5/5 5 5 3m22s
+# kubectl get rs
 
-```
+NAME                     DESIRED   CURRENT   READY   AGE
+vietdeploy1-6867597758   2         2         2       27m
 
-ReplicaSet
-
-```
-
-kubectl get rs
-
-NAME DESIRED CURRENT READY AGE vietdeploy1-6867597758 0 0 0 3m38s
-vietdeploy1-7bb4b549bf 5 5 5 40s
-
-```
-
-Pods
-
-```
-
-kubectl get pods
-
-NAME READY STATUS RESTARTS AGE vietdeploy1-5fd8d5c7cb-fjzhd 1/1 Running 0 3m22s
-vietdeploy1-5fd8d5c7cb-gjglv 1/1 Running 0 3m22s vietdeploy1-5fd8d5c7cb-lmzvg
-1/1 Running 0 3m23s vietdeploy1-5fd8d5c7cb-qf9ts 1/1 Running 0 3m23s
-vietdeploy1-5fd8d5c7cb-tbnq9 1/1 Running 0 3m21s
+# kubectl get pods
+NAME                           READY   STATUS    RESTARTS   AGE
+vietdeploy1-6867597758-895ng   1/1     Running   0          3h32m
+vietdeploy1-6867597758-vlbjr   1/1     Running   0          3h40m
 
 ```
 
@@ -220,15 +206,15 @@ vietdeploy1-5fd8d5c7cb-tbnq9 1/1 Running 0 3m21s
 ✅ ReplicaSet
 
 ```
+# kubectl get rs
 
-kubectl get rs
-
-NAME DESIRED CURRENT READY AGE vietdeploy1-5fd8d5c7cb 0 0 0 5m43s
-vietdeploy1-7bb4b549bf 5 5 5 48s
+NAME                     DESIRED   CURRENT   READY   AGE
+vietdeploy1-6867597758   0         0         0       3h43m
+vietdeploy1-7bb4b549bf   2         2         2       115s
 
 ```
 
-🌈 New Pods go from OLD ReplicaSet `vietdeploy1-5fd8d5c7cb` to NEW ReplicaSet
+🌈 New Pods go from OLD ReplicaSet `vietdeploy1-6867597758` to NEW ReplicaSet
 `vietdeploy1-7bb4b549bf`
 
 ✅ Pods
@@ -237,28 +223,11 @@ vietdeploy1-7bb4b549bf 5 5 5 48s
 
 kubectl get pods
 
-NAME READY STATUS RESTARTS AGE vietdeploy1-7bb4b549bf-7jlgn 1/1 Running 0 3m41s
-vietdeploy1-7bb4b549bf-nlq82 1/1 Running 0 3m39s vietdeploy1-7bb4b549bf-qdtdf
-1/1 Running 0 3m41s vietdeploy1-7bb4b549bf-w7jh9 1/1 Running 0 3m41s
-vietdeploy1-7bb4b549bf-wn56p 1/1 Running 0 3m39s
+NAME                           READY   STATUS    RESTARTS   AGE
+vietdeploy1-7bb4b549bf-dcwzq   1/1     Running   0          2m30s
+vietdeploy1-7bb4b549bf-dlhr5   1/1     Running   0          2m29s
 
 ```
 
 ➡️ All Pods are re-deployed. By default, `Rolling deployment` is used and there
 is no downtime.
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
