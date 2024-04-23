@@ -171,7 +171,7 @@ be6801cc6364   elegant_hellman   0.00%     53.32MiB / 7.755GiB   0.67%     2.92k
 Command:
 
 ```
-docker logs <container-name> -- sh
+docker logs <container-name>
 ```
 
 Example: `docker logs miracle`

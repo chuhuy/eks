@@ -130,35 +130,32 @@ vietdeploy1-6867597758-vlbjr   1/1     Running   0          11m
 # 3️⃣ Expose Deployment as a Service
 
 ```
-
 # Expose Deployment as a Service
-
 kubectl expose deployment <deployment-name> --type=NodePort --port=8080
---name=<service-name> kubectl expose deployment vietdeploy1 --type=NodePort
---port=8080 --name=service1
+--name=<service-name>
 
+kubectl expose deployment vietdeploy1 --type=NodePort --port=8080 --name=service1
 # Output: service/service1 exposed
 
 # Get Service Info
-
-kubectl get svc Observation: Make a note of port which starts with 3 (Example:
-80:3xxxx/TCP). Capture the port 3xxxx and use it in application URL below.
+kubectl get svc
 
 # Get Public IP of Worker Nodes
-
-kubectl get nodes -owide Observation: Make a note of "EXTERNAL-IP" if your
-Kubernetes cluster is setup on Amazon EKS.
-
+kubectl get nodes -owide
 ```
 
-**Pod Output:**
+Output
 
 ```
+# kubectl get svc
+NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes   ClusterIP   10.100.0.1      <none>        443/TCP          3d18h
+service1     NodePort    10.100.153.52   <none>        8080:31975/TCP   5s
 
-NAME READY STATUS RESTARTS AGE vietdeploy1-6867597758-2h64z 1/1 Running 0 16s
-vietdeploy1-6867597758-9l2v8 1/1 Running 0 16s vietdeploy1-6867597758-k5pht 1/1
-Running 0 64s vietdeploy1-6867597758-lkw6t 1/1 Running 0 16s
-vietdeploy1-6867597758-ntm59 1/1 Running 0 16s
+# kubectl get pods
+NAME                           READY   STATUS    RESTARTS   AGE
+vietdeploy1-6867597758-895ng   1/1     Running   0          7m53s
+vietdeploy1-6867597758-vlbjr   1/1     Running   0          16m
 
 ```
 
@@ -169,23 +166,17 @@ Website:
 # 4️⃣ Update Deployment
 
 ```
-
 # Get Container Name from current deployment
-
 kubectl get deployment vietdeploy1 -o yaml
 
 # Output Container Name: eks
-
 # Output Container Image: vietaws/eks:v1
 
 # Update Deployment to Version 2
-
-kubectl set image deployment/<deployment-name>
-<container-name>=<container-image> kubectl set image deployment/vietdeploy1
-eks=vietaws/eks:v2
+kubectl set image deployment/<deployment-name> <container-name>=<container-image>
+kubectl set image deployment/vietdeploy1 eks=vietaws/eks:v2
 
 # Output: deployment.apps/vietdeploy1 image updated
-
 ```
 
 ### 🔑 Before

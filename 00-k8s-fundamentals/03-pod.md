@@ -30,16 +30,14 @@ vietaws-wrrvh    1/1     Running   0          32h   192.168.17.248   ip-192-168-
 
 # 1️⃣ Create a Pod
 
-Command:
-
 ```
+# Command
 kubectl run <pod_name> --image <image_name>
-```
 
-Example: `kubectl run vietpod1 --image vietaws/eks:v1` Output example:
+# Example:
+kubectl run vietpod1 --image vietaws/eks:v1
 
-```
-pod/vietpod1 created
+# Output example: pod/vietpod1 created
 ```
 
 ## ✅ Verify
@@ -78,6 +76,6 @@ Command:
 
 ```
 kubectl delete pod <pod_name>
-```
 
-Example: `kubeclt delete pod vietpod1`
+# Example: `kubeclt delete pod vietpod1`
+```
