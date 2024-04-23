@@ -42,7 +42,7 @@ kubectl run vietpod1 --image vietaws/eks:v1
 ### 👍 Check pod running
 
 ```
-$kubectl get pods
+# kubectl get pods
 NAME             READY   STATUS    RESTARTS   AGE
 vietaws-lkmgs    1/1     Running   0          32h
 vietaws-qskmg    1/1     Running   0          32h
@@ -53,13 +53,13 @@ vietpod1         1/1     Running   0          67s
 ### 👍 Describe pod
 
 ```
-kubectl describe pod vietpod1
+kubectl describe pods vietpod1
 ```
 
 ### 👍 View pod on node
 
 ```
-kubectl get pod -owide
+kubectl get pods -owide
 ```
 
 ### 👍 Others
