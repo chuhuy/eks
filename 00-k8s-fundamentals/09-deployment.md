@@ -163,7 +163,7 @@ Website:
 
 <img src="../images/img4.png" alt="vietaws deployment k8s" style="width: 300px;"/>
 
-# 4️⃣ Update Deployment
+# 4️⃣ Update Deployment Using "set image"
 
 ```
 # Get Container Name from current deployment
@@ -231,3 +231,144 @@ vietdeploy1-7bb4b549bf-dlhr5   1/1     Running   0          2m29s
 
 ➡️ All Pods are re-deployed. By default, `Rolling deployment` is used and there
 is no downtime.
+
+➡️ You can access the NodePort Service but with total new Pods.
+
+<img src="../images/img5.png" alt="vietaws" style="width: 300px"/>
+
+You will see version 2 of application.
+
+### ⭐️ Deployment Rollout
+
+```
+# Check deployment status
+kubectl rollout status deployments vietdeploy1
+# Output: deployment "vietdeploy1" successfully rolled out
+
+# Deployment Rollout History
+kubectl rollout history deployments vietdeploy1
+
+deployment.apps/vietdeploy1
+REVISION  CHANGE-CAUSE
+1         <none>
+2         <none>
+```
+
+# 5️⃣ Update Deployment Using "Edit Deployment"
+
+## Edit Deployment
+
+```
+# Edit Deployment
+kubectl edit deployment/<deployment-name>
+kubectl edit deployment/vietdeploy1
+```
+
+## Update Spec
+
+```
+# Change From 2.0.0
+    spec:
+      containers:
+      - image: vietaws/eks:v2
+
+# Change To 3.0.0
+    spec:
+      containers:
+      - image: vietaws/eks:v3
+```
+
+## Verify
+
+```
+# kubectl get deployments
+NAME          READY   UP-TO-DATE   AVAILABLE   AGE
+vietdeploy1   2/2     2            2           4h16m
+
+# kubectl rollout status deployments vietdeploy1
+deployment "vietdeploy1" successfully rolled out
+
+# kubectl rollout history deployments vietdeploy1
+deployment.apps/vietdeploy1
+REVISION  CHANGE-CAUSE
+1         <none>
+2         <none>
+3         <none>
+
+# kubectl get rs
+NAME                     DESIRED   CURRENT   READY   AGE
+vietdeploy1-5fd8d5c7cb   2         2         2       2m52s
+vietdeploy1-6867597758   0         0         0       4h18m
+vietdeploy1-7bb4b549bf   0         0         0       36m
+
+# kubectl get pods
+NAME                           READY   STATUS    RESTARTS   AGE
+vietdeploy1-5fd8d5c7cb-6tw78   1/1     Running   0          3m12s
+vietdeploy1-5fd8d5c7cb-vvtnz   1/1     Running   0          3m11s
+```
+
+➡️ Same Deployment, New ReplicaSet, New Pods
+
+<img src="../images/img6.png" alt="vietaws" style="width: 300px" />
+
+✅ Application version 3 deployed
+
+# 6️⃣ Rollback to Previous Version
+
+## Check Revision
+
+```
+kubectl rollout history deployments vietdeploy1 --revision=1
+kubectl rollout history deployments vietdeploy1 --revision=2
+kubectl rollout history deployments vietdeploy1 --revision=3
+
+# Example Output:
+
+deployment.apps/vietdeploy1 with revision #1
+Pod Template:
+  Labels:	app=vietdeploy1
+	pod-template-hash=6867597758
+  Containers:
+   eks:
+    Image:	vietaws/eks:v1
+    Port:	<none>
+    Host Port:	<none>
+    Environment:	<none>
+    Mounts:	<none>
+  Volumes:	<none>
+```
+
+## Rollback to Previous
+
+```
+# Rollback command
+kubectl rollout undo deployments vietdeploy1
+
+# Verify
+kubectl rollout history deployments vietdeploy1
+
+deployment.apps/vietdeploy1
+REVISION  CHANGE-CAUSE
+1         <none>
+3         <none>
+4         <none>
+
+# kubectl rollout history deployments vietdeploy1 --revision=4
+➡️ image: vietaws/eks:v2
+
+# kubectl rollout history deployments vietdeploy1 --revision=3
+➡️ image: vietaws/eks:v3
+
+# kubectl get rs
+NAME                     DESIRED   CURRENT   READY   AGE
+vietdeploy1-5fd8d5c7cb   0         0         0       14m
+vietdeploy1-6867597758   0         0         0       4h29m
+vietdeploy1-7bb4b549bf   2         2         2       47m
+➡️ Switched from rs 5fd8d5c7cb to 7bb4b549bf
+
+# kubectl get pods
+NAME                           READY   STATUS    RESTARTS   AGE
+vietdeploy1-7bb4b549bf-bqkpk   1/1     Running   0          4m50s
+vietdeploy1-7bb4b549bf-r88qx   1/1     Running   0          4m49s
+➡️ Redeployed Pods.
+```
