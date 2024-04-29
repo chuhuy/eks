@@ -125,6 +125,8 @@ Other docker run command options:
 - `docker pull <container_image>` - download image only
 - `docker run -d -p 8081:8080 vietaws/eks:v1` - `-d` run in detach mode
 - `docker run -d --name miracle -p 8082:8080 vietaws/arm:v2`
+- `docker run -d -e bgColor=green -p 8085:8080 vietaws/arm:v1` - run with env
+  variables
 
 ```
 CONTAINER ID   IMAGE            COMMAND                  CREATED          STATUS          PORTS                    NAMES
