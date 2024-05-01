@@ -16,4 +16,5 @@
 | -------------------------------------- | ------------------------------------------------- |
 | Created by Kubelet                     | Created by Kube api-server (DaemonSet Controller) |
 | Deploy k8s Control Plane as Static Pod | Deploy Monitoring Agent, Logger on Worker Node    |
-| Ignore kube-scheduler                  |
+
+`Both: Ignore kube-scheduler`
