@@ -51,8 +51,6 @@ kubeclt taint nodes node1 env=demo:NoSchedule
 
 ### 3 - Tolerance a Pod
 
-#### Pod1 - one toleration (app=blue)
-
 ```
 apiVersion: v1
 kind: Pod
@@ -80,3 +78,16 @@ status: {}
 ⚠️ The Pod will be in `Pending` state because Node has 02 taints
 
 ⚠️ If Node2 has no taints, Pod will be scheduled on Node2
+
+### 4 - Remove a Taint
+
+```
+kubectl taint node node-name key:value:effect-
+
+For example:
+kubectl taint node node1 env:demo:NoSchedule-
+
+# node/node1 untainted
+
+kubect get pods
+```
