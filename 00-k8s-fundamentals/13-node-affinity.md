@@ -51,9 +51,11 @@ spec:
 ## ⚠️ Notes
 
 ```
-If you specify both `nodeSelector` and `nodeAffinity`, both must be satisfied for the Pod to be scheduled onto a node.
+- If you specify both nodeSelector and nodeAffinity, both must be satisfied for the Pod to be scheduled onto a node.
 
-If you specify multiple terms in nodeSelectorTerms associated with nodeAffinity types, then the Pod can be scheduled onto a node if one of the specified terms can be satisfied (terms are ORed).
+- If you specify multiple terms in nodeSelectorTerms associated with nodeAffinity types, then the Pod can be scheduled onto a node if one of the specified terms can be satisfied (terms are ORed).
 
-If you specify multiple expressions in a single matchExpressions field associated with a term in nodeSelectorTerms, then the Pod can be scheduled onto a node only if all the expressions are satisfied (expressions are ANDed).
+- If you specify multiple expressions in a single matchExpressions field associated with a term in nodeSelectorTerms, then the Pod can be scheduled onto a node only if all the expressions are satisfied (expressions are ANDed).
+
+- weight can be between 1 to 100. You can have multiple weights for Pod. K8s will calculate sum for all possible Node and schedule to Node with highest score.
 ```
