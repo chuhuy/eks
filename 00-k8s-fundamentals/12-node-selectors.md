@@ -36,3 +36,5 @@ spec:
 - There is no `OR` condition. For example: Place a Pod to Node'size Large or
   Medium
 - There is no `NOT` condition. For example: Place a Pod to Node's size not Small
+
+✅ We will use `Node Affinity` to have more flexible.
