@@ -116,3 +116,28 @@ HOME=/root
 ```
 
 ✅ You can see the `APP_COLOR` and `APP_ENV` in the env
+
+## 3️⃣ Extract Single Variable
+
+In above example, we will extract all env vars in the `app-config cm`. If we
+want to extract less vars. we will use following syntax.
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: envar-cm-demo
+  labels:
+    purpose: demonstrate-envars
+spec:
+  containers:
+  - name: envar-demo-container
+    image: vietaws/eks:v1
+    env:
+      - name: MY_APP_COLOR
+        valueFrom:
+          configMapRef:
+            name: app-config
+            key: APP_COLOR
+
+```
