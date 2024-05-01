@@ -61,3 +61,13 @@ kubectl get rs
 NAME              DESIRED   CURRENT   READY   AGE
 myapp-6645b78bb   2         2         2       6m1s
 ```
+
+Check ArgoCD UI: `http://localhost:8080`
+
+<img src="../images/img9.png" alt="vietaws" style="width: 500px" />
+
+Click on the App
+
+<img src="../images/img10.png" alt="vietaws" style="width: 500px" />
+
+✅ You can see the Deployments, RS, and Pod in ArgoCD UI

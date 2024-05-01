@@ -15,3 +15,7 @@ kubectl get deployments -n myapp
 NAME    READY   UP-TO-DATE   AVAILABLE   AGE
 myapp   3/3     3            3           14m
 ```
+
+Check on ArgoCD UI: `http://localhost:8080`
+
+<img src="../images/img11.png" alt="vietaws" style="width: 500px" />
