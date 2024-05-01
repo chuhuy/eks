@@ -4,3 +4,10 @@
 - When we have new Node in cluster, DaemonSet will place the Pod to Node.
 - Use Case: Monitoring Solution, Logs Viewer, kube-proxy, networking solution
 - Manifest similar structure with ReplicaSet, but Kind:DaemonSet
+
+# 💎 Usage
+
+```
+# get all ds for all namespaces
+kubectl get ds -A
+```
