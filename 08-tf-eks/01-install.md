@@ -37,6 +37,6 @@ terraform plan
 # deploy
 terraform apply
 
-# destroy
+# destroy tf
 terraform apply -destroy
 ```
