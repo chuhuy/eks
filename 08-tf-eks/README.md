@@ -39,4 +39,20 @@ terraform apply
 
 # destroy tf
 terraform apply -destroy
+
+# destroy single resource
+terraform destroy -target RESOURCE_TYPE.NAME
+
+# list all resources
+terraform state list
+
+# apply single resource
+terraform plan -target=aws_instance.myinstance
+terraform apply -target=aws_instance.myinstance
+
+terraform apply -target=aws_vpc.vpctf
+
+# apply single resource using module
+terraform plan -target=module.mymodule.aws_instance.myinstance
+terraform apply -target=module.mymodule.aws_instance.myinstance
 ```
