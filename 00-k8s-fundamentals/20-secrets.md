@@ -126,3 +126,13 @@ HOME=/root
 
 ✅ You can see all variables from `app-secret`. From application code, you don't
 have to decode the secret value again.
+
+‼️ Please remember that `secret` is not encrypted. Only encoded. Do not push
+your secret on public repo.
+
+‼️ `Secret`is not encrypted in ETCD.
+
+‼️ Anyone can create Pod/Deployment in same namespace can access secret as well.
+Configure least-privilege access to Secrets - RBAC
+
+‼️ Consider to use AWS Secret Manager to manage secret outside of k8s cluster.
