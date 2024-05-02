@@ -34,14 +34,15 @@ resource "aws_iam_role_policy_attachment" "amazon_ssm_managed_instance_core" {
   role       = aws_iam_role.nodes.name
 }
 
-resource "aws_eks_node_group" "private_nodes" {
+resource "aws_eks_node_group" "public_nodes" {
+  # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_node_group
   cluster_name    = aws_eks_cluster.demo.name
-  node_group_name = "private-nodes"
+  node_group_name = "ng1"
   node_role_arn   = aws_iam_role.nodes.arn
 
   # Single subnet to avoid data transfer charges while testing.
   subnet_ids = [
-    aws_subnet.private_1a.id
+    aws_subnet.public_1a.id
   ]
 
   capacity_type  = "ON_DEMAND"
@@ -59,6 +60,10 @@ resource "aws_eks_node_group" "private_nodes" {
 
   labels = {
     role = "general"
+  }
+  tags = {
+    Name        = "tf-eks-demo",
+    Environment = "demo"
   }
 
   depends_on = [

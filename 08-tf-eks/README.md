@@ -1,7 +1,7 @@
 📗 Guide:
 https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
 
-1. Install tf
+# 1. Install tf
 
 ```
 brew upgrade hashicorp/tap/terraform
@@ -18,14 +18,14 @@ terraform version
 terraform -help plan
 ```
 
-2. Init tf
+# 2. Init tf
 
 ```
 # Go to project folder - run one time for new project
 terraform init
 ```
 
-3. Working
+# 3. Working TF
 
 ```
 # format code
@@ -55,4 +55,14 @@ terraform apply -target=aws_vpc.vpctf
 # apply single resource using module
 terraform plan -target=module.mymodule.aws_instance.myinstance
 terraform apply -target=module.mymodule.aws_instance.myinstance
+```
+
+# 4 - Connect cluster
+
+```
+aws eks update-kubeconfig --alias tf --name eks-tf --region ap-southeast-1 --profile eks
+
+kubectl config view --minify
+
+kubectl get nodes
 ```

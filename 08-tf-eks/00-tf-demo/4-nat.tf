@@ -18,20 +18,20 @@ resource "aws_nat_gateway" "nat1" {
 }
 
 # NAT 2
-resource "aws_eip" "nat2" {
-  domain = "vpc"
-  tags = {
-    Name = "nat2-eip"
-  }
-}
+# resource "aws_eip" "nat2" {
+#   domain = "vpc"
+#   tags = {
+#     Name = "nat2-eip"
+#   }
+# }
 
-resource "aws_nat_gateway" "nat2" {
-  allocation_id = aws_eip.nat2.id
-  subnet_id     = aws_subnet.public_1b.id
+# resource "aws_nat_gateway" "nat2" {
+#   allocation_id = aws_eip.nat2.id
+#   subnet_id     = aws_subnet.public_1b.id
 
-  tags = {
-    Name = "nat2-tf"
-  }
+#   tags = {
+#     Name = "nat2-tf"
+#   }
 
-  depends_on = [aws_internet_gateway.igwtf]
-}
+#   depends_on = [aws_internet_gateway.igwtf]
+# }
