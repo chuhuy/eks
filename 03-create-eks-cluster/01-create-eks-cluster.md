@@ -10,19 +10,43 @@
 
 ```
 # Create Cluster
-eksctl create cluster --name=eks-vietaws \
+eksctl create cluster --name=vietaws \
                       --region=ap-southeast-1 \
                       --zones=ap-southeast-1a,ap-southeast-1b \
-                      --without-nodegroup
+                      --without-nodegroup \
+                      --profile eks
 
 # Get List of clusters
-eksctl get cluster
+eksctl get cluster --profile eks
+```
+
+#### Enable IAM OIDC for EKS Cluster
+
+Purpose: Enable IAM Role for Service Account on EKS cluster
+
+```
+# Syntax
+eksctl utils associate-iam-oidc-provider \
+    --region region-code \
+    --cluster <cluter-name> \
+    --approve
+
+# Replace with region & cluster name & profile (optional)
+eksctl utils associate-iam-oidc-provider \
+    --region ap-southeast-1 \
+    --cluster vietaws \
+    --approve \
+    --profile eks
+
+# check oidc on IAM - Identity provider or
+aws eks describe-cluster --name vietaws --profile eks --query "cluster.identity.oidc.issuer" --output text | cut -d '/' -f 5
+
 ```
 
 ### create cluster with existing vpc
 
 ```
-eksctl create cluster --name=eks-vietaws \
+eksctl create cluster --name=vietaws \
                       --region=ap-southeast-1 \
                       #--zones=ap-southeast-1a,ap-southeast-1b \
                       --vpc-from-kops-cluster vpc-018e29483ce154a50 \
@@ -42,7 +66,7 @@ to login to the EKS Worker Nodes using Terminal.
 
 ```
 # Create Public Node Group
-eksctl create nodegroup --cluster=eks-vietaws \
+eksctl create nodegroup --cluster=vietaws \
                        --region=ap-southeast-1 \
                        --name=ng1 \
                        --node-type=t3.medium \
@@ -50,14 +74,37 @@ eksctl create nodegroup --cluster=eks-vietaws \
                        --nodes-min=2 \
                        --nodes-max=4 \
                        --node-volume-size=20 \
-                       --ssh-access \
-                       --ssh-public-key=eks-kp \
                        --managed \
                        --asg-access \
                        --external-dns-access \
                        --full-ecr-access \
                        --appmesh-access \
-                       --alb-ingress-access
+                       --alb-ingress-access \
+                       --profile eks
+
+# Create private node group
+eksctl create nodegroup --cluster=vietaws \
+                        --region=ap-southeast-1 \
+                        --name=ng-private-1 \
+                        --node-type=t3.medium \
+                        --nodes-min=2 \
+                        --nodes-max=4 \
+                        --node-volume-size=20 \
+                        --managed \
+                        --asg-access \
+                        --external-dns-access \
+                        --full-ecr-access \
+                        --appmesh-access \
+                        --alb-ingress-access \
+                        --node-private-networking \
+                        --profile eks
+# Get NodeGroups in a EKS Cluster
+eksctl get nodegroup --cluster=<Cluster-Name>
+eksctl get nodegroup --cluster=vietaws --profile eks
+
+# Delete Node Group - Replace nodegroup name and cluster name
+eksctl delete nodegroup <NodeGroup-Name> --cluster <Cluster-Name>
+eksctl delete nodegroup ng1 --cluster vietaws --profile eks
 ```
 
 eksctl create cluster --name=everything \
@@ -84,16 +131,16 @@ eksctl get clusters
 
 eksctl get nodegroup --cluster=<clusterName>
 
-eksctl get nodegroup --cluster=eks-vietaws
+eksctl get nodegroup --cluster=vietaws
 
 ### Delete Node Group
 
 eksctl delete nodegroup --cluster=<clusterName> --name=<nodegroupName>
 
-eksctl delete nodegroup --cluster=eks-vietaws --name=ng1
+eksctl delete nodegroup --cluster=vietaws --name=ng-private-1 --profile eks
 
 ### Delete Cluster
 
 eksctl delete cluster <clusterName>
 
-eksctl delete cluster eks-vietaws
+eksctl delete cluster vietaws --profile eks

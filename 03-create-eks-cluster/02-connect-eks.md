@@ -5,13 +5,13 @@
 Command
 
 ```
-aws eks update-kubeconfig --name <clustername> --region <region>
+aws eks update-kubeconfig --alias <alias> --name <clustername> --region <region>
 ```
 
 Example
 
 ```
-aws eks update-kubeconfig --name eks-vietaws --region ap-southeast-1 --profile eks
+aws eks update-kubeconfig --alias vietaws --name vietaws --profile eks
 ```
 
 Output
