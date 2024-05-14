@@ -23,3 +23,5 @@ Good to refer all the below for additional understanding.
 - https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/alb-ingress.md
 
 - https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md
+
+- https://docs.aws.amazon.com/eks/latest/userguide/add-ons-images.html
