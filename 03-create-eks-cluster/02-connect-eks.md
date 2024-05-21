@@ -11,7 +11,7 @@ aws eks update-kubeconfig --alias <alias> --name <clustername> --region <region>
 Example
 
 ```
-aws eks update-kubeconfig --alias vietaws --name vietaws --profile eks
+aws eks update-kubeconfig --alias vietaws5 --name vietaws5 --profile eks
 ```
 
 Output

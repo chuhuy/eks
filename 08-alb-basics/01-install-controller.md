@@ -23,7 +23,7 @@ aws iam create-policy \
 
 ```
 eksctl create iamserviceaccount \
-  --cluster=vietaws1 \
+  --cluster=vietaws5 \
   --namespace=kube-system \
   --name=aws-load-balancer-controller \
   --role-name AmazonEKSLoadBalancerControllerRole \
@@ -33,7 +33,7 @@ eksctl create iamserviceaccount \
 
 # verify
 # Get IAM Service Account
-eksctl  get iamserviceaccount --cluster vietaws --profile eks
+eksctl  get iamserviceaccount --cluster vietaws5 --profile eks
 
 # Describe Service Account alb-ingress-controller
 kubectl describe sa aws-load-balancer-controller -n kube-system
@@ -55,7 +55,7 @@ helm repo update
 
 helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
  -n kube-system \
- --set clusterName=vietaws \
+ --set clusterName=vietaws5 \
  --set serviceAccount.create=false \
  --set serviceAccount.name=aws-load-balancer-controller
 

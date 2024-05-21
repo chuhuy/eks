@@ -5,7 +5,7 @@ metadata:
   name: app2-ingress
   labels:
     app: app2
-  namespace: app2-ns
+  namespace: ns2
   annotations:
     # Load Balancer Name
     alb.ingress.kubernetes.io/load-balancer-name: app2-ingress

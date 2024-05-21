@@ -9,10 +9,10 @@ fargateProfiles:
     selectors:
       # All workloads in the "app2-ns" Kubernetes namespace will be
       # scheduled onto Fargate:
-      - namespace: app2-ns
+      - namespace: ns2
   - name: home-fp
     selectors:
       # label selectors will be scheduled onto Fargate:
-      - namespace: home-ns
+      - namespace: ns3
         labels:
           runon: fargate

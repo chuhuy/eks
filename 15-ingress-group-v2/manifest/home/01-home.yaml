@@ -5,7 +5,6 @@ metadata:
   namespace: ns3
   labels:
     app: home
-    runon: fargate
 spec:
   replicas: 3
   selector:
@@ -15,20 +14,12 @@ spec:
     metadata:
       labels:
         app: home
-        runon: fargate
     spec:
       containers:
         - name: simple-home
           image: vietaws/eks:home
           ports:
             - containerPort: 8080
-          resources:
-            requests:
-              memory: "128Mi"
-              cpu: "500m"
-            limits:
-              memory: "500Mi"
-              cpu: "1000m"
 ---
 apiVersion: v1
 kind: Service
@@ -37,7 +28,6 @@ metadata:
   namespace: ns3
   labels:
     app: home
-    runon: fargate
   annotations:
     #Important Note:  Need to add health check path annotations in service level if we are planning to use multiple targets in a load balancer
     alb.ingress.kubernetes.io/healthcheck-path: /

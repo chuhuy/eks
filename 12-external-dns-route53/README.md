@@ -47,7 +47,7 @@ eksctl create iamserviceaccount \
 eksctl create iamserviceaccount \
     --name external-dns \
     --namespace default \
-    --cluster vietaws1 \
+    --cluster vietaws5 \
     --attach-policy-arn arn:aws:iam::825770460273:policy/AllowExternalDNSUpdates \
     --approve \
     --override-existing-serviceaccounts \
@@ -67,7 +67,7 @@ Observation:
 1. Verify the Annotations and you should see the IAM Role is present on the Service Account
 
 # List IAM Service Accounts using eksctl
-eksctl get iamserviceaccount --cluster vietaws --profile eks
+eksctl get iamserviceaccount --cluster vietaws5 --profile eks
 ```
 
 ## 4️⃣ - Update External-DNS Pod manifest

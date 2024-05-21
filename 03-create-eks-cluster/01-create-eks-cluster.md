@@ -10,7 +10,7 @@
 
 ```
 # Create Cluster
-eksctl create cluster --name=vietaws \
+eksctl create cluster --name=vietaws5 \
                       --region=ap-southeast-1 \
                       --zones=ap-southeast-1a,ap-southeast-1b \
                       --without-nodegroup \
@@ -34,12 +34,12 @@ eksctl utils associate-iam-oidc-provider \
 # Replace with region & cluster name & profile (optional)
 eksctl utils associate-iam-oidc-provider \
     --region ap-southeast-1 \
-    --cluster vietaws \
+    --cluster vietaws5 \
     --approve \
     --profile eks
 
 # check oidc on IAM - Identity provider or
-aws eks describe-cluster --name vietaws --profile eks --query "cluster.identity.oidc.issuer" --output text | cut -d '/' -f 5
+aws eks describe-cluster --name vietaws5 --profile eks --query "cluster.identity.oidc.issuer" --output text | cut -d '/' -f 5
 
 ```
 
@@ -83,7 +83,7 @@ eksctl create nodegroup --cluster=vietaws \
                        --profile eks
 
 # Create private node group
-eksctl create nodegroup --cluster=vietaws \
+eksctl create nodegroup --cluster=vietaws5 \
                         --region=ap-southeast-1 \
                         --name=ng-private-1 \
                         --node-type=t3.medium \
@@ -100,7 +100,7 @@ eksctl create nodegroup --cluster=vietaws \
                         --profile eks
 # Get NodeGroups in a EKS Cluster
 eksctl get nodegroup --cluster=<Cluster-Name>
-eksctl get nodegroup --cluster=vietaws --profile eks
+eksctl get nodegroup --cluster=vietaws5 --profile eks
 
 # Delete Node Group - Replace nodegroup name and cluster name
 eksctl delete nodegroup <NodeGroup-Name> --cluster <Cluster-Name>
