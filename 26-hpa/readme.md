@@ -15,6 +15,9 @@ kubectl get deployment metrics-server -n kube-system
 # Create deployment & increase load
 
 ```
+# Create Deployment
+kubectl apply -f ./01-hpa-demo.yaml
+
 # Template
 kubectl autoscale deployment <deployment-name> --cpu-percent=50 --min=1 --max=10
 

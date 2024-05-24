@@ -2,10 +2,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-internal-lb-demo
+  name: 17-ingress-internal-lb-demo
   annotations:
     # Load Balancer Name
-    alb.ingress.kubernetes.io/load-balancer-name: ingress-internal-lb
+    alb.ingress.kubernetes.io/load-balancer-name: 17-ingress-internal-lb
     # Ingress Core Settings
     #kubernetes.io/ingress.class: "alb" (OLD INGRESS CLASS NOTATION - STILL WORKS BUT RECOMMENDED TO USE IngressClass Resource)
     # Creates External Application Load Balancer

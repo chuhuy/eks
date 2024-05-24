@@ -6,7 +6,7 @@ metadata:
   name: app1-ingress
   annotations:
     # Load Balancer Name
-    alb.ingress.kubernetes.io/load-balancer-name: ingress-groups-demo
+    alb.ingress.kubernetes.io/load-balancer-name: 15-ingress-groups-demo
     # Ingress Core Settings
     #kubernetes.io/ingress.class: "alb" (OLD INGRESS CLASS NOTATION - STILL WORKS BUT RECOMMENDED TO USE IngressClass Resource)
     alb.ingress.kubernetes.io/scheme: internet-facing

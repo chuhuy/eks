@@ -65,7 +65,7 @@ IAM Policy
 ```
 aws eks update-kubeconfig --name <cluster-name> --alias <alias> --region <region-code> --profile eksdev
 
-aws eks update-kubeconfig --name eks-tf --alias ekstfdev --region ap-southeast-1 --profile eksdev
+aws eks update-kubeconfig --name vietaws5 --alias eksdev --region ap-southeast-1 --profile eksdev
 
 => Output
 An error occurred (AccessDeniedException) when calling the DescribeCluster operation: User: arn:aws:iam::xxxxxxxxx:user/developer is not authorized to perform: eks:DescribeCluster on resource: arn:aws:eks:ap-southeast-1:xxxxxxxxx:cluster/eks-tf
@@ -140,7 +140,7 @@ kubectl -n kube-system edit cm aws-auth
 ## ⭐️ Verify
 
 ```
-aws eks update-kubeconfig --name eks-tf --alias ekstfdev --region ap-southeast-1 --profile eksdev
+aws eks update-kubeconfig --name vietaws5 --alias eksdev --region ap-southeast-1 --profile eksdev
 
 => Updated context ekstfdev in /Users/vietaws/.kube/config
 

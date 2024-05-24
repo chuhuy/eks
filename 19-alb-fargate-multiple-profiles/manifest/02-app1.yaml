@@ -14,6 +14,7 @@ spec:
     metadata:
       labels:
         app: app1
+        # runon: fargate
     spec:
       containers:
         - name: simple-app1

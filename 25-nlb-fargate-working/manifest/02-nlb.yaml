@@ -1,13 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nlb-tls-external-dns
+  name: 25-nlb-fargate
+  namespace: home-ns
   annotations:
     # Traffic Routing
-    service.beta.kubernetes.io/aws-load-balancer-name: nlb-tls-external-dns
+    service.beta.kubernetes.io/aws-load-balancer-name: 25-nlb-fargate
     service.beta.kubernetes.io/aws-load-balancer-type: external
-    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: instance # specifies the target type to configure for NLB. You can choose between instance and ip
-    #service.beta.kubernetes.io/aws-load-balancer-subnets: subnet-xxxx, mySubnet ## Subnets are auto-discovered if this annotation is not specified, see Subnet Discovery for further details.
+
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip # For Fargate Workloads we should use target-type as ip
 
     # Health Check Settings
     service.beta.kubernetes.io/aws-load-balancer-healthcheck-protocol: http
@@ -31,7 +32,8 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp # specifies whether to use TLS or TCP for the backend traffic between the load balancer and the kubernetes pods.
 
     # External DNS - For creating a Record Set in Route53
-    external-dns.alpha.kubernetes.io/hostname: nlb102.eks.vietaws.com
+    external-dns.alpha.kubernetes.io/hostname: nlb-fargate.eks.vietaws.com
+
 spec:
   type: LoadBalancer
   selector:

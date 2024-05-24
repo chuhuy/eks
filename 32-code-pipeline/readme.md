@@ -91,6 +91,9 @@ AWS Managed permission: AmazonEC2ContainerRegistryPowerUser, AWSCodeCommitPowerU
 ```
 
 ```
+# kubectl -n kube-system edit cm aws-auth
+
+
 mapRoles: |
     - groups:
       - system:masters

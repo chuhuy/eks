@@ -7,8 +7,8 @@ metadata:
   annotations:
     # Substitute your account ID and IAM service role name below.
 
-    #TODO 1: Replace with your IAM ARN Role for extern-dns
-    eks.amazonaws.com/role-arn: arn:aws:iam::825770460273:role/eksctl-vietaws1-addon-iamserviceaccount-defau-Role1-UFToPctJhuMM
+    #TODO 1: Replace with your IAM ARN Role for external-dns
+    eks.amazonaws.com/role-arn: arn:aws:iam::825770460273:role/eksctl-vietaws5-addon-iamserviceaccount-defau-Role1-2yF4ByVTzsZv
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole

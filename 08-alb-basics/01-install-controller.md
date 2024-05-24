@@ -26,7 +26,7 @@ eksctl create iamserviceaccount \
   --cluster=vietaws5 \
   --namespace=kube-system \
   --name=aws-load-balancer-controller \
-  --role-name AmazonEKSLoadBalancerControllerRole \
+  --role-name AmazonEKSLoadBalancerControllerRole5 \
   --attach-policy-arn=arn:aws:iam::825770460273:policy/AWSLoadBalancerControllerIAMPolicy \
   --override-existing-serviceaccounts \
   --approve --profile eks

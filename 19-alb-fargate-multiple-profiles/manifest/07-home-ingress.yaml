@@ -9,7 +9,7 @@ metadata:
   namespace: ns3
   annotations:
     # Load Balancer Name
-    alb.ingress.kubernetes.io/load-balancer-name: home-ingress
+    alb.ingress.kubernetes.io/load-balancer-name: 19-home-ingress
     # Ingress Core Settings
     #kubernetes.io/ingress.class: "alb" (OLD INGRESS CLASS NOTATION - STILL WORKS BUT RECOMMENDED TO USE IngressClass Resource)
     alb.ingress.kubernetes.io/scheme: internet-facing

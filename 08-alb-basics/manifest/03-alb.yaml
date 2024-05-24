@@ -5,13 +5,13 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: alb-home-service
+  name: 08-alb-basics
   labels:
     app: home-app
   annotations:
     # Ingress Core Settings
     # kubernetes.io/ingress.class: "alb" | deprecated
-    alb.ingress.kubernetes.io/load-balancer-name: home-ingress
+    alb.ingress.kubernetes.io/load-balancer-name: 08-alb-basics
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
     alb.ingress.kubernetes.io/target-type: instance #| instance | ip
@@ -26,13 +26,8 @@ metadata:
     alb.ingress.kubernetes.io/unhealthy-threshold-count: "5"
 spec:
   ingressClassName: aws-ingress-class
-  rules:
-    - http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: home-nodeport-service
-                port:
-                  number: 8080
+  defaultBackend:
+    service:
+      name: home-svc
+      port:
+        number: 8080

@@ -2,10 +2,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: alb-target-ip
+  name: 16-alb-target-ip
   annotations:
     # Load Balancer Name
-    alb.ingress.kubernetes.io/load-balancer-name: alb-target-ip
+    alb.ingress.kubernetes.io/load-balancer-name: 16-alb-target-ip
     # Ingress Core Settings
     #kubernetes.io/ingress.class: "alb" (OLD INGRESS CLASS NOTATION - STILL WORKS BUT RECOMMENDED TO USE IngressClass Resource)
     alb.ingress.kubernetes.io/scheme: internet-facing

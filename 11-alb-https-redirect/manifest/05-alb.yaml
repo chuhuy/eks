@@ -2,10 +2,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: alb-https-redirect
+  name: 11-alb-https-redirect
   annotations:
     # Load Balancer Name
-    alb.ingress.kubernetes.io/load-balancer-name: alb-https-redirect
+    alb.ingress.kubernetes.io/load-balancer-name: 11-alb-https-redirect
     # Ingress Core Settings
     #kubernetes.io/ingress.class: "alb" (OLD INGRESS CLASS NOTATION - STILL WORKS BUT RECOMMENDED TO USE IngressClass Resource)
     alb.ingress.kubernetes.io/scheme: internet-facing

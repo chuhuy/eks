@@ -11,7 +11,7 @@ eksctl create fargateprofile --cluster <cluster_name> \
 
 
 # Replace values
-eksctl create fargateprofile --cluster vietaws1 \
+eksctl create fargateprofile --cluster vietaws5 \
                              --name fargate1 \
                              --namespace fargate-ns \
                              --profile eks

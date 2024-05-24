@@ -24,14 +24,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: home-nodeport-service
+  name: home-svc
   labels:
     app: home-app
 spec:
   type: NodePort
   selector:
-    app: home-app
+    app: home
   ports:
     - port: 8080
       targetPort: 8080
-      #nodePort: 31988
+      # nodePort: 31989

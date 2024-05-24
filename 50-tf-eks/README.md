@@ -1,6 +1,13 @@
 📗 Guide:
 https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
 
+# 0. Before start
+
+1. 🥰 Draw final architecture to be provisioned
+2. 🥰 Read latest official document
+
+✅ https://registry.terraform.io/providers/hashicorp/aws/latest/docs
+
 # 1. Install tf
 
 ```

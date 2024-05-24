@@ -2,10 +2,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: external-dns
+  name: 13-external-dns
   annotations:
     # Load Balancer Name
-    alb.ingress.kubernetes.io/load-balancer-name: external-dns
+    alb.ingress.kubernetes.io/load-balancer-name: 13-external-dns
     # Ingress Core Settings
     #kubernetes.io/ingress.class: "alb" (OLD INGRESS CLASS NOTATION - STILL WORKS BUT RECOMMENDED TO USE IngressClass Resource)
     alb.ingress.kubernetes.io/scheme: internet-facing
